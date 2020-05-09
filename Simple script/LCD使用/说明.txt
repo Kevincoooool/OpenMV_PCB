@@ -1,0 +1,5 @@
+将m_lcd.py和main.py放入openmv里面的盘里面
+运行main.py即可正常显示
+
+市面上普通的lcd屏都能用
+驱动是ST7735
