@@ -1,0 +1,56 @@
+Protel Design System Design Rule Check
+PCB File : H:\µçÂ·\¼æÖ°\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc
+Date     : 2020/1/7
+Time     : 0:04:06
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+   Violation between Short-Circuit Constraint: Between Via (3012.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3012.24mil][Y = 3423.31mil]
+   Violation between Short-Circuit Constraint: Between Via (2987.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 2987.24mil][Y = 3478.31mil]
+   Violation between Short-Circuit Constraint: Between Via (3012.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3012.24mil][Y = 3533.31mil]
+   Violation between Short-Circuit Constraint: Between Via (3067.24mil,3398.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3067.24mil][Y = 3398.31mil]
+   Violation between Short-Circuit Constraint: Between Via (3067.24mil,3558.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3067.24mil][Y = 3558.31mil]
+   Violation between Short-Circuit Constraint: Between Via (3147.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3147.24mil][Y = 3478.31mil]
+   Violation between Short-Circuit Constraint: Between Via (3122.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3122.24mil][Y = 3423.31mil]
+   Violation between Short-Circuit Constraint: Between Via (3122.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3122.24mil][Y = 3533.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4282.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4282.24mil][Y = 3423.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4282.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4282.24mil][Y = 3533.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4172.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4172.24mil][Y = 3423.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4147.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4147.24mil][Y = 3478.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4172.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4172.24mil][Y = 3533.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4227.24mil,3398.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4227.24mil][Y = 3398.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4307.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4307.24mil][Y = 3478.31mil]
+   Violation between Short-Circuit Constraint: Between Via (4227.24mil,3558.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4227.24mil][Y = 3558.31mil]
+Rule Violations :16
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Track (3677.4mil,2870.59mil)(3690.195mil,2883.385mil) on BOTT06 
+   Violation between Un-Routed Net Constraint: Track (3613.375mil,3011.345mil)(3626.165mil,2998.555mil) on BOTT06 
+Rule Violations :2
+
+Processing Rule : Clearance Constraint (Gap=3.5mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=3.5mil) (Max=10000mil) (Preferred=5mil) (All)
+Rule Violations :0
+
+Processing Rule : Routing Layers(All)
+Rule Violations :0
+
+Processing Rule : Routing Via (MinHoleWidth=7.874mil) (MaxHoleWidth=118.11mil) (PreferredHoleWidth=7.874mil) (MinWidth=15.748mil) (MaxWidth=196.85mil) (PreferedWidth=15.748mil) (All)
+Rule Violations :0
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=10mil) (Max=10mil) (Prefered=10mil)  and Width Constraints (Min=15mil) (Max=15mil) (Prefered=15mil) (All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+
+Violations Detected : 18
+Time Elapsed        : 00:00:06

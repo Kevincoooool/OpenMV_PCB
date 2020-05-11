@@ -1,0 +1,34 @@
+------------------------------------------------------------------------------------------
+Gerber File Extension Report For: base-32-bit.GBR   2020/1/7  0:08:11
+------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------
+Layer Extension     Layer Description                      
+------------------------------------------------------------------------------------------
+.GTL                TOP01                                   
+.GP1                GND02                                   
+.G1                 SIG03                                   
+.G2                 SIG04                                   
+.GP2                PWR05                                   
+.GBL                BOTT06                                  
+.GPB                Bottom Pad Master                       
+.GPT                Top Pad Master                          
+.GTO                Top Overlay                             
+.GTP                Top Paste                               
+.GTS                Top Solder                              
+.GBS                Bottom Solder                           
+.GBP                Bottom Paste                            
+.GBO                Bottom Overlay                          
+.GKO                Keep-Out Layer                          
+.GM1                Dimension                               
+.GM3                Assembly Top                            
+.GM5                Reference                               
+.GM6                Assembly Text Bottom                    
+.GM7                Top Assembly                            
+.GM13               tTest                                   
+.GM15               Mechanical 15                           
+.GM16               Unrouted                                
+.GD1                Drill Drawing                           
+.GG1                Drill Guide                             
+------------------------------------------------------------------------------------------

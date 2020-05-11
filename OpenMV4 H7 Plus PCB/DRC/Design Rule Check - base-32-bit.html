@@ -1,0 +1,374 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\APP\AD16_DATA\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2020/1/7</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">0:04:06</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:06</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc" class="file"><acronym title="H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc">H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">18</td></tr>
+</table>
+</td>
+</table><a name="IDFWRQKC3D4VP2HKRRK2DV3HHCCEUCFLRHQ3ZXVOGLOG325YKGRTCC"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMOSW0W3GJGKAB2X2DT4A3LBCKMIUFMCTS5TGDUDV0IQZYG41W3QF">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHTM1K3PG1TXMFG4NBAYUEJD5VIW3JMPIB3BXBGKWBJUDXLSF0CYO">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNK44HYOMPKLCNI5WB0MB03L3ECZ2WIQC44J5YFLRLU4KKGBLTIMP">Clearance Constraint (Gap=3.5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUJMZX2K4LNIHOWO0WQO2V1MZFCKDK2SZ1WQGGTOGZRUGBN5TBAQF">Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDC5G2WWXQKFODD4KFTYWPSJMSCZCR3YKZLGKL5LHKXLQMUNAPZMD">Width Constraint (Min=3.5mil) (Max=10000mil) (Preferred=5mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNPNGMTDYNATHHDBKDSIHGTVCRGK5PGEJW1YDJMWYHAXFFXRBXK">Routing Layers(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSPK0QWM0X35OJEMXQVZTZCA45DCYMO1SBHPPPIJJR3BTUT1EYUXB">Routing Via (MinHoleWidth=7.874mil) (MaxHoleWidth=118.11mil) (PreferredHoleWidth=7.874mil) (MinWidth=15.748mil) (MaxWidth=196.85mil) (PreferedWidth=15.748mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA1FLH4XJNPQ1BEIDRFP3YUNJTFZCNSY4GDAGVQPF0AJMDAZEGEAL">Differential Pairs Uncoupled Length using the Gap Constraints (Min=10mil) (Max=10mil) (Prefered=10mil)  and Width Constraints (Min=15mil) (Max=15mil) (Prefered=15mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4ZHKZGMM4PROMUB1DCUFZACCLCVPZXDSRW2BHHGB4P521NP44TF">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOBV4EMPMXQZULPVOCCPZJ0I22NP3CZ4HHNA2J0KA42LFCGCHOJTM">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">18</td>
+</tr>
+</table><br><a name="IDMOSW0W3GJGKAB2X2DT4A3LBCKMIUFMCTS5TGDUDV0IQZYG41W3QF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2997.902mil|Location2.X=3026.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2997.902mil|Location2.X=3026.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True">Short-Circuit Constraint: Between Via (3012.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3012.24mil][Y = 3423.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2972.902mil|Location2.X=3001.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2972.902mil|Location2.X=3001.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True">Short-Circuit Constraint: Between Via (2987.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 2987.24mil][Y = 3478.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2997.902mil|Location2.X=3026.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2997.902mil|Location2.X=3026.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True">Short-Circuit Constraint: Between Via (3012.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3012.24mil][Y = 3533.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3052.902mil|Location2.X=3081.578mil|Location1.Y=3383.972mil|Location2.Y=3412.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3052.902mil|Location2.X=3081.578mil|Location1.Y=3383.972mil|Location2.Y=3412.648mil|Absolute=True">Short-Circuit Constraint: Between Via (3067.24mil,3398.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3067.24mil][Y = 3398.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3052.902mil|Location2.X=3081.578mil|Location1.Y=3543.972mil|Location2.Y=3572.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3052.902mil|Location2.X=3081.578mil|Location1.Y=3543.972mil|Location2.Y=3572.648mil|Absolute=True">Short-Circuit Constraint: Between Via (3067.24mil,3558.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3067.24mil][Y = 3558.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3132.902mil|Location2.X=3161.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3132.902mil|Location2.X=3161.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True">Short-Circuit Constraint: Between Via (3147.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3147.24mil][Y = 3478.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.902mil|Location2.X=3136.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.902mil|Location2.X=3136.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True">Short-Circuit Constraint: Between Via (3122.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3122.24mil][Y = 3423.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.902mil|Location2.X=3136.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.902mil|Location2.X=3136.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True">Short-Circuit Constraint: Between Via (3122.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H1-B2,8(3067.24mil,3478.31mil) on Multi-Layer Location : [X = 3122.24mil][Y = 3533.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4267.902mil|Location2.X=4296.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4267.902mil|Location2.X=4296.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4282.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4282.24mil][Y = 3423.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4267.902mil|Location2.X=4296.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4267.902mil|Location2.X=4296.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4282.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4282.24mil][Y = 3533.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4157.902mil|Location2.X=4186.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4157.902mil|Location2.X=4186.578mil|Location1.Y=3408.972mil|Location2.Y=3437.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4172.24mil,3423.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4172.24mil][Y = 3423.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4132.902mil|Location2.X=4161.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4132.902mil|Location2.X=4161.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4147.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4147.24mil][Y = 3478.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4157.902mil|Location2.X=4186.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4157.902mil|Location2.X=4186.578mil|Location1.Y=3518.972mil|Location2.Y=3547.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4172.24mil,3533.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4172.24mil][Y = 3533.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4212.902mil|Location2.X=4241.578mil|Location1.Y=3383.972mil|Location2.Y=3412.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4212.902mil|Location2.X=4241.578mil|Location1.Y=3383.972mil|Location2.Y=3412.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4227.24mil,3398.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4227.24mil][Y = 3398.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4292.902mil|Location2.X=4321.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4292.902mil|Location2.X=4321.578mil|Location1.Y=3463.972mil|Location2.Y=3492.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4307.24mil,3478.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4307.24mil][Y = 3478.31mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4212.902mil|Location2.X=4241.578mil|Location1.Y=3543.972mil|Location2.Y=3572.648mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4212.902mil|Location2.X=4241.578mil|Location1.Y=3543.972mil|Location2.Y=3572.648mil|Absolute=True">Short-Circuit Constraint: Between Via (4227.24mil,3558.31mil) from TOP01 to BOTT06 And Pad H2-B2,8(4227.24mil,3478.31mil) on Multi-Layer Location : [X = 4227.24mil][Y = 3558.31mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHTM1K3PG1TXMFG4NBAYUEJD5VIW3JMPIB3BXBGKWBJUDXLSF0CYO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3577.4mil|Location2.X=3802.96mil|Location1.Y=2770.59mil|Location2.Y=3072.96mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3577.4mil|Location2.X=3802.96mil|Location1.Y=2770.59mil|Location2.Y=3072.96mil|Absolute=True">Un-Routed Net Constraint: Track (3677.4mil,2870.59mil)(3690.195mil,2883.385mil) on BOTT06 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=H:\%E7%94%B5%E8%B7%AF\%E5%85%BC%E8%81%8C\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.375mil|Location2.X=3802.96mil|Location1.Y=2911.345mil|Location2.Y=3072.99mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=H:\电路\兼职\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3513.375mil|Location2.X=3802.96mil|Location1.Y=2911.345mil|Location2.Y=3072.99mil|Absolute=True">Un-Routed Net Constraint: Track (3613.375mil,3011.345mil)(3626.165mil,2998.555mil) on BOTT06 </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

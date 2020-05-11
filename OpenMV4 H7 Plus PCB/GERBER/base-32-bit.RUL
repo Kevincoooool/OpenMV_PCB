@@ -1,0 +1,6 @@
+DRC Rules Export File for PCB: H:\µçÂ·\¼æÖ°\20191220_jiskra\DOC\base-32-bit.PrjPcb\base-32-bit.PcbDoc
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=3.50
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=3.50
+RuleKind=SolderMaskExpansion|RuleName=mlMinStopFrame|Scope=Board|Minimum=2.00
+RuleKind=SolderMaskExpansion|RuleName=Expansion_SMDSolder_OFF|Scope=Board|Minimum=0.00

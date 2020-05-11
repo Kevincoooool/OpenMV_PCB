@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [base-32-bit.PrjPcb]
+   Generated File[base-32-bit.TXT]
+   Generated File[base-32-bit.LDP]
+   Generated File[base-32-bit.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 0:08:44 On 2020/1/7
