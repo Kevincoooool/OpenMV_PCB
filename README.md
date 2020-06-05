@@ -1,5 +1,4 @@
-### OpenMV_PCB
-README: [English](https://github.com/Kevincoooool/OpenMV_PCB/blob/master/README.md) | [中文](https://github.com/Kevincoooool/OpenMV_PCB/blob/master/README-zh.md)
+### OpenMV_PCB_KSMV
 * OpenMV PCB Project Used Altium Designer 20
 * **OPENMV** is an open source project abroad, **MIT** agreement allows anyone to use modified copy to sell, pay tribute to the original author **Ibrahim Abdelkader & Kwabena W. Agyeman**
 * Open source allows everyone to do it themselves!
@@ -11,3 +10,28 @@ README: [English](https://github.com/Kevincoooool/OpenMV_PCB/blob/master/README.
 * OV7725, OV2640, OV5640 can be directly plugged into the back side
 * Type-C USB
 * DIY QQ communication group: 554150925
+
+
+### OpenMV_PCB_KSMV
+* ??Altium Designer 20??OpenMV PCB
+* **OPENMV**?????????**MIT**?????????????????????????**Ibrahim Abdelkader?Kwabena W. Agyeman**???
+* ????????????
+* ????????????[KSMV](https://item.taobao.com/item.htm?spm=a1z10.1-c-s.w4004-17480225679.8.bc5821d6jzZt2j&id=618072724609)
+* ???STM32H743VIT6
+* LDO?SPX3819 XC6206
+* LCD?ST7735 ST7789
+* ????MT9V034?????
+* ????OV7725?OV2640?OV5640
+* Type-C USB
+* DIY QQ????554150925
+
+## ??
+
+?????????????
+
+* ?????????????????????????????
+ 
+| ??? | ???? |
+| ------ | --------- |
+| <img src="http://chuantu.xyz/t6/738/1591316841x989559058.jpg" height="248px" width="164px" title="???" style="display:inherit;"/> | <img src="http://chuantu.xyz/t6/738/1591316857x992239403.jpg" height="248px" width="164px" title="????" style="display:inherit;"/> |
+
