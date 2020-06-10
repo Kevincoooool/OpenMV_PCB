@@ -33,5 +33,5 @@
  
 | 支付宝 | 微信支付 |
 | ------ | --------- |
-| <img src="http://chuantu.xyz/t6/738/1591317334x992239403.jpg" height="190px" width="164px" title="支付宝" style="display:inherit;"/> | <img src="http://chuantu.xyz/t6/738/1591316857x992239403.jpg" height="190px" width="164px" title="微信支付" style="display:inherit;"/> |
+| <img src="https://github.com/Kevincoooool/OpenMV_PCB/pic/alipay.jpg" height="190px" width="164px" title="支付宝" style="display:inherit;"/> | <img src="https://github.com/Kevincoooool/OpenMV_PCB/pic/wechat.jpg" height="190px" width="164px" title="微信支付" style="display:inherit;"/> |
 
