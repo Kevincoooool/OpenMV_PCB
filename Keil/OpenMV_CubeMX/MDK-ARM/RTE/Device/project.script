@@ -1,0 +1,4 @@
+load STM32H743VITx 
+project name STCubeGenerated 
+project toolchain "MDK-ARM V5" 
+project path "E:\Desktop\OpenMV_20200520\stm32\MDK-ARM\RTE\Device\STM32H743VITx\" 

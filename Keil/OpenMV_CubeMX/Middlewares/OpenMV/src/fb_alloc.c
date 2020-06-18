@@ -1,0 +1,150 @@
+/*
+ * This file is part of the OpenMV project.
+ * Copyright (c) 2013-2016 Kwabena W. Agyeman <kwagyeman@openmv.io>
+ * This work is licensed under the MIT license, see the file LICENSE for details.
+ *
+ * Interface for using extra frame buffer RAM as a stack.
+ *
+ */
+#include "bsp_mcu.h"//<mp.h>
+#include "fb_alloc.h"
+#include "framebuffer.h"
+#include "omv_boardconfig.h"
+
+//extern char _fballoc;
+extern char sys_buf[];
+static char *sys_buf_end;
+static char *pointer = 0;
+
+
+static int marks = 0;
+
+__weak NORETURN void fb_alloc_fail()
+{
+    //nlr_raise(mp_obj_new_exception_msg(&mp_type_MemoryError,
+    //    "Out of fast Frame Buffer Stack Memory!"
+    //    " Please reduce the resolution of the image you are running this algorithm on to bypass this issue!"));
+    DEBUG("Out of fast Frame Buffer Stack Memory!"
+          " Please reduce the resolution of the image you are running this algorithm on to bypass this issue!");
+}
+
+void fb_alloc_init0()
+{
+    //pointer = &_fballoc;
+    pointer     = &sys_buf[OMV_FB_SIZE + OMV_FB_ALLOC_SIZE];        //内存分配地址
+    sys_buf_end = &sys_buf[OMV_FB_SIZE + OMV_FB_ALLOC_SIZE];        //内存最大地址
+
+    
+    marks = 0;
+}
+
+uint32_t fb_avail()
+{
+    int32_t temp = pointer - ((char *) MAIN_FB_PIXELS()) - sizeof(uint32_t);
+     
+    return (temp < sizeof(uint32_t)) ? 0 : temp;
+}
+
+void fb_alloc_mark()
+{
+    char *new_pointer = pointer - sizeof(uint32_t);
+
+    // Check if allocation overwrites the framebuffer pixels
+    if (new_pointer < (char *) MAIN_FB_PIXELS()) {
+        //nlr_raise_for_fb_alloc_mark(mp_obj_new_exception_msg(&mp_type_MemoryError,
+        //    "Out of fast Frame Buffer Stack Memory!"
+        //    " Please reduce the resolution of the image you are running this algorithm on to bypass this issue!"));
+        DEBUG( "Out of fast Frame Buffer Stack Memory!"
+               "Please reduce the resolution of the image you are running this algorithm on to bypass this issue!");
+    }
+
+    // fb_alloc does not allow regions which are a size of 0 to be alloced,
+    // meaning that the value below is always 8 or more but never 4. So,
+    // we will use a size value of 4 as a marker in the alloc stack.
+    *((uint32_t *) new_pointer) = sizeof(uint32_t); // Save size.
+    pointer = new_pointer;
+    marks += 1;
+}
+
+void fb_alloc_free_till_mark()
+{
+    if (!marks) return;
+    while (pointer < sys_buf_end) {
+        int size = *((uint32_t *) pointer);
+        pointer += size; // Get size and pop.
+        if (size == sizeof(uint32_t)) break; // Break on first marker.
+    }
+    marks -= 1;
+}
+
+// returns null pointer without error if size==0
+void *fb_alloc(uint32_t size)
+{
+    if (!size) {
+        return NULL;
+    }
+
+    size=((size+sizeof(uint32_t)-1)/sizeof(uint32_t))*sizeof(uint32_t);// Round Up
+    char *result = pointer - size;
+    char *new_pointer = result - sizeof(uint32_t);
+
+    // Check if allocation overwrites the framebuffer pixels
+    if (new_pointer < (char *) MAIN_FB_PIXELS()) {
+        fb_alloc_fail();
+    }
+
+    // size is always 4/8/12/etc. so the value below must be 8 or more.
+    *((uint32_t *) new_pointer) = size + sizeof(uint32_t); // Save size.
+    pointer = new_pointer;
+    return result;
+}
+
+// returns null pointer without error if passed size==0
+void *fb_alloc0(uint32_t size)
+{
+    void *mem = fb_alloc(size);
+    memset(mem, 0, size); // does nothing if size is zero.
+    return mem;
+}
+
+void *fb_alloc_all(uint32_t *size)
+{
+    int32_t temp = pointer - ((char *) MAIN_FB_PIXELS()) - sizeof(uint32_t);
+
+    if (temp < sizeof(uint32_t)) {
+        *size = 0;
+        return NULL;
+    }
+
+    *size = (temp / sizeof(uint32_t)) * sizeof(uint32_t); // Round Down
+    char *result = pointer - *size;
+    char *new_pointer = result - sizeof(uint32_t);
+
+    // size is always 4/8/12/etc. so the value below must be 8 or more.
+    *((uint32_t *) new_pointer) = *size + sizeof(uint32_t); // Save size.
+    pointer = new_pointer;
+    return result;
+}
+
+// returns null pointer without error if returned size==0
+void *fb_alloc0_all(uint32_t *size)
+{
+    void *mem = fb_alloc_all(size);
+    memset(mem, 0, *size); // does nothing if size is zero.
+    return mem;
+}
+
+void fb_free()
+{
+    if (pointer < sys_buf_end) {  
+        pointer += *((uint32_t *) pointer); // Get size and pop.
+    }
+}
+
+void fb_free_all()
+{
+    while (pointer < sys_buf_end) {
+        pointer += *((uint32_t *) pointer); // Get size and pop.
+    }
+    marks = 0;
+}

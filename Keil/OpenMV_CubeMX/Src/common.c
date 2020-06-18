@@ -1,0 +1,372 @@
+/* Includes ------------------------------------------------------------------*/
+#include "common.h"
+
+// CRC 高位字节值表
+static const uint8_t s_CRCHi[] = {
+    0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
+    0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+    0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+    0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+    0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1,
+    0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+    0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1,
+    0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+    0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
+    0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40,
+    0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1,
+    0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+    0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
+    0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40,
+    0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+    0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+    0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
+    0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+    0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+    0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+    0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+    0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40,
+    0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1,
+    0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+    0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
+    0x80, 0x41, 0x00, 0xC1, 0x81, 0x40
+} ;
+// CRC 低位字节值表
+const uint8_t s_CRCLo[] = {
+    0x00, 0xC0, 0xC1, 0x01, 0xC3, 0x03, 0x02, 0xC2, 0xC6, 0x06,
+    0x07, 0xC7, 0x05, 0xC5, 0xC4, 0x04, 0xCC, 0x0C, 0x0D, 0xCD,
+    0x0F, 0xCF, 0xCE, 0x0E, 0x0A, 0xCA, 0xCB, 0x0B, 0xC9, 0x09,
+    0x08, 0xC8, 0xD8, 0x18, 0x19, 0xD9, 0x1B, 0xDB, 0xDA, 0x1A,
+    0x1E, 0xDE, 0xDF, 0x1F, 0xDD, 0x1D, 0x1C, 0xDC, 0x14, 0xD4,
+    0xD5, 0x15, 0xD7, 0x17, 0x16, 0xD6, 0xD2, 0x12, 0x13, 0xD3,
+    0x11, 0xD1, 0xD0, 0x10, 0xF0, 0x30, 0x31, 0xF1, 0x33, 0xF3,
+    0xF2, 0x32, 0x36, 0xF6, 0xF7, 0x37, 0xF5, 0x35, 0x34, 0xF4,
+    0x3C, 0xFC, 0xFD, 0x3D, 0xFF, 0x3F, 0x3E, 0xFE, 0xFA, 0x3A,
+    0x3B, 0xFB, 0x39, 0xF9, 0xF8, 0x38, 0x28, 0xE8, 0xE9, 0x29,
+    0xEB, 0x2B, 0x2A, 0xEA, 0xEE, 0x2E, 0x2F, 0xEF, 0x2D, 0xED,
+    0xEC, 0x2C, 0xE4, 0x24, 0x25, 0xE5, 0x27, 0xE7, 0xE6, 0x26,
+    0x22, 0xE2, 0xE3, 0x23, 0xE1, 0x21, 0x20, 0xE0, 0xA0, 0x60,
+    0x61, 0xA1, 0x63, 0xA3, 0xA2, 0x62, 0x66, 0xA6, 0xA7, 0x67,
+    0xA5, 0x65, 0x64, 0xA4, 0x6C, 0xAC, 0xAD, 0x6D, 0xAF, 0x6F,
+    0x6E, 0xAE, 0xAA, 0x6A, 0x6B, 0xAB, 0x69, 0xA9, 0xA8, 0x68,
+    0x78, 0xB8, 0xB9, 0x79, 0xBB, 0x7B, 0x7A, 0xBA, 0xBE, 0x7E,
+    0x7F, 0xBF, 0x7D, 0xBD, 0xBC, 0x7C, 0xB4, 0x74, 0x75, 0xB5,
+    0x77, 0xB7, 0xB6, 0x76, 0x72, 0xB2, 0xB3, 0x73, 0xB1, 0x71,
+    0x70, 0xB0, 0x50, 0x90, 0x91, 0x51, 0x93, 0x53, 0x52, 0x92,
+    0x96, 0x56, 0x57, 0x97, 0x55, 0x95, 0x94, 0x54, 0x9C, 0x5C,
+    0x5D, 0x9D, 0x5F, 0x9F, 0x9E, 0x5E, 0x5A, 0x9A, 0x9B, 0x5B,
+    0x99, 0x59, 0x58, 0x98, 0x88, 0x48, 0x49, 0x89, 0x4B, 0x8B,
+    0x8A, 0x4A, 0x4E, 0x8E, 0x8F, 0x4F, 0x8D, 0x4D, 0x4C, 0x8C,
+    0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42,
+    0x43, 0x83, 0x41, 0x81, 0x80, 0x40
+};
+
+uint16_t CRC16_Modbus(uint8_t *_pBuf, uint16_t _usLen)
+{
+    uint8_t ucCRCHi = 0xFF; /* 高CRC字节初始化 */
+    uint8_t ucCRCLo = 0xFF; /* 低CRC 字节初始化 */
+    uint16_t usIndex;  /* CRC循环中的索引 */
+
+    while (_usLen--)
+    {
+        usIndex = ucCRCHi ^ *_pBuf++; /* 计算CRC */
+        ucCRCHi = ucCRCLo ^ s_CRCHi[usIndex];
+        ucCRCLo = s_CRCLo[usIndex];
+    }
+    return ((uint16_t)ucCRCHi << 8 | ucCRCLo);
+}
+
+
+uint16_t BEBufToUint16(uint8_t *_pBuf)
+{
+    return (((uint16_t)_pBuf[0] << 8) | _pBuf[1]);
+}
+
+uint16_t LEBufToUint16(uint8_t *_pBuf)
+{
+    return (((uint16_t)_pBuf[1] << 8) | _pBuf[0]);
+}
+
+uint32_t BEBufToUint32(uint8_t *_pBuf)
+{
+    return (((uint32_t)_pBuf[0] << 24) | ((uint32_t)_pBuf[1] << 16) | ((uint32_t)_pBuf[2] << 8) | _pBuf[3]);
+}
+
+uint32_t LEBufToUint32(uint8_t *_pBuf)
+{
+    return (((uint32_t)_pBuf[3] << 24) | ((uint32_t)_pBuf[2] << 16) | ((uint32_t)_pBuf[1] << 8) | _pBuf[0]);
+}
+
+float BEBufToFloat(uint8_t *_pBuf)  
+{  
+    float freq;
+    char *Modbus_HoldReg[4];                 //定义保持寄存器指针数组
+
+    //第一步：指针初始化
+    Modbus_HoldReg[0] = ((char*)(&freq)) + 0;     //低地址指向高位
+    Modbus_HoldReg[1] = ((char*)(&freq)) + 1;     
+    Modbus_HoldReg[2] = ((char*)(&freq)) + 2;     
+    Modbus_HoldReg[3] = ((char*)(&freq)) + 3;     //高地址指向低位
+
+    //第二步：给地址指定的内存单元赋值（对应Modbus协议中的数据解析）
+    *Modbus_HoldReg[0] = _pBuf[0];
+    *Modbus_HoldReg[1] = _pBuf[1];
+    *Modbus_HoldReg[2] = _pBuf[2];
+    *Modbus_HoldReg[3] = _pBuf[3];
+
+    return freq;
+}
+
+float LEBufToFloat(uint8_t *_pBuf)  
+{  
+    float freq;
+    char *Modbus_HoldReg[4];                 //定义保持寄存器指针数组
+
+    //第一步：指针初始化
+    Modbus_HoldReg[0] = ((char*)(&freq)) + 0;     //低地址指向高位
+    Modbus_HoldReg[1] = ((char*)(&freq)) + 1;     
+    Modbus_HoldReg[2] = ((char*)(&freq)) + 2;     
+    Modbus_HoldReg[3] = ((char*)(&freq)) + 3;     //高地址指向低位
+
+    //第二步：给地址指定的内存单元赋值（对应Modbus协议中的数据解析）
+    *Modbus_HoldReg[0] = _pBuf[3];
+    *Modbus_HoldReg[1] = _pBuf[2];
+    *Modbus_HoldReg[2] = _pBuf[1];
+    *Modbus_HoldReg[3] = _pBuf[0];
+
+    return freq;
+}
+
+void Int2Str(uint8_t *p_str, uint32_t intnum)
+{
+  uint32_t i, divider = 1000000000, pos = 0, status = 0;
+
+  for (i = 0; i < 10; i++)
+  {
+    p_str[pos++] = (intnum / divider) + 48;
+
+    intnum = intnum % divider;
+    divider /= 10;
+    if ((p_str[pos-1] == '0') & (status == 0))
+    {
+      pos = 0;
+    }
+    else
+    {
+      status++;
+    }
+  }
+}
+
+uint32_t Str2Int(uint8_t *p_inputstr, uint32_t *p_intnum)
+{
+  uint32_t i = 0, res = 0;
+  uint32_t val = 0;
+
+  if ((p_inputstr[0] == '0') && ((p_inputstr[1] == 'x') || (p_inputstr[1] == 'X')))
+  {
+    i = 2;
+    while ( ( i < 11 ) && ( p_inputstr[i] != '\0' ) )
+    {
+      if (ISVALIDHEX(p_inputstr[i]))
+      {
+        val = (val << 4) + CONVERTHEX(p_inputstr[i]);
+      }
+      else
+      {
+        /* Return 0, Invalid input */
+        res = 0;
+        break;
+      }
+      i++;
+    }
+
+    /* valid result */
+    if (p_inputstr[i] == '\0')
+    {
+      *p_intnum = val;
+      res = 1;
+    }
+  }
+  else /* max 10-digit decimal input */
+  {
+    while ( ( i < 11 ) && ( res != 1 ) )
+    {
+      if (p_inputstr[i] == '\0')
+      {
+        *p_intnum = val;
+        /* return 1 */
+        res = 1;
+      }
+      else if (((p_inputstr[i] == 'k') || (p_inputstr[i] == 'K')) && (i > 0))
+      {
+        val = val << 10;
+        *p_intnum = val;
+        res = 1;
+      }
+      else if (((p_inputstr[i] == 'm') || (p_inputstr[i] == 'M')) && (i > 0))
+      {
+        val = val << 20;
+        *p_intnum = val;
+        res = 1;
+      }
+      else if (ISVALIDDEC(p_inputstr[i]))
+      {
+        val = val * 10 + CONVERTDEC(p_inputstr[i]);
+      }
+      else
+      {
+        /* return 0, Invalid input */
+        res = 0;
+        break;
+      }
+      i++;
+    }
+  }
+
+  return res;
+}
+
+uint8_t Verify_XOR(uint8_t *buffer, uint8_t len)
+{
+    uint8_t i;
+    uint8_t verify = 0;
+    for(i=0; i<len; i++)
+        verify ^= buffer[i];
+    return verify;
+}
+
+uint8_t Verify_Sum(uint8_t *buffer, uint8_t len)
+{
+    uint8_t i;
+    uint8_t verify = 0;
+    for(i=0; i<len; i++)
+        verify += buffer[i];
+    return verify;
+}
+
+/**************************************************************************************
+功能：从内存串中查找目标串(ASCII 字符串), 内存串中带0x00 也可正常搜到
+输入参数：
+        源内存串地址:        mem
+        查找范围长度:        maxLen
+        查找的串:    str
+输出参数：
+        要查找字串的位置: pos
+返回值：
+        目标字串的位置，查找不到返回NULL
+**************************************************************************************/
+char* memstr(const char* mem, uint16_t maxLen, const char* str)
+{
+    uint16_t i = 0;
+    char* pos = NULL;
+
+    if((mem == NULL) || (str == NULL) || (maxLen <= 0) || maxLen < strlen(str))
+    {
+        return NULL;
+    }
+    
+    for(i = 0; i <  maxLen - strlen(str) + 1; i++)
+    {
+        if(mem[i] == str[0])
+        {
+            pos = strstr(mem + i, str);
+        }
+        if(pos != NULL)
+        {
+            return pos;
+        }
+    }
+
+    return NULL;
+}
+
+/**************************************************************************************
+功能：从内存串中查找目标串(ASCII 字符串), 内存串中带0x00 也可正常搜到，大小写不敏感
+输入参数：
+        源内存串地址:        mem
+        查找范围长度:        maxLen
+        查找的串:    str
+输出参数：
+        要查找字串的位置: pos
+返回值：
+        目标字串的位置，查找不到返回NULL
+**************************************************************************************/
+char* memistr(const char* mem, uint16_t maxLen, const char* str)
+{
+    uint16_t i = 0;
+    uint16_t j = 0;
+
+    if((mem == NULL) || (str == NULL) || (maxLen <= 0) || maxLen < strlen(str))
+    {
+        return NULL;
+    }
+    
+    for(i = 0; i < maxLen - strlen(str) + 1; i++)
+    {
+        for(j = 0; j < strlen(str); j++)
+        {
+            if(toupper(mem[i + j]) != toupper(str[j]))
+            {
+                break;
+            }
+        }
+        if(j == strlen(str))
+        {
+            return (char*)(mem + i);
+        }
+    }
+
+    return NULL;
+}
+
+//将小写转成大写
+void StrToUpper_n(char* str, uint16_t len)
+{
+    uint16_t i = 0;
+    if(str == NULL)
+    {
+        return;
+    }
+    while(i < len)
+    {
+        str[i] = toupper(str[i]);
+        i++;
+    }
+}
+
+//将字符串转成大写
+int32_t str2Digit(uint8_t* src)
+{
+    uint8_t i = 0;
+    uint8_t negFlag = 0;
+    int32_t val = 0;
+    if(src == NULL)
+    {
+        return 0;
+    }
+    if(src[0] == '-')
+    {
+        negFlag = 1;
+        i = 1;
+    }
+    for(; i < 10; i++)
+    {
+        if((src[i] >= 0x30) && (src[i] <= 0x39))
+        {
+            val *= 10;
+            val += (src[i] - 0x30);
+        }
+        else
+        {
+            break;
+        }
+    }
+    if(negFlag == 1)
+    {
+        val = -val;
+    }
+    return val;
+}
+
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
