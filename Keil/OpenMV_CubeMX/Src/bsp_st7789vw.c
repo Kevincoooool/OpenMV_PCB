@@ -94,7 +94,7 @@ void ST7789VW_Init(void)
         }
     }
     //«Â∆¡
-    ST7789VW_FillRect(0, 0, ST7789VW_WIDTH, ST7789VW_HEIGHT, C_DARK_GRAY);
+    ST7789VW_FillRect(0, 0, ST7789VW_WIDTH, ST7789VW_HEIGHT, C_WHITE);
 }
 
 

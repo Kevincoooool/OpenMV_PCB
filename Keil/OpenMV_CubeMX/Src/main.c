@@ -101,17 +101,14 @@ int main(void)
 	UG_WindowSetTitleText( &window_1, "OpenMV4" );
 	UG_WindowSetTitleTextFont( &window_1, &FONT_12X16 );
 	/* Configure Button 2 */
-//	UG_ButtonCreate( &window_1, &button1_1, BTN_ID_0, 0, 180, 120, 240 );
-//	UG_ButtonCreate( &window_1, &button1_2, BTN_ID_1, 120, 180, 240, 240 );
-
 	UG_ButtonCreate( &window_1, &button1_1, BTN_ID_0, 20, 2, 100, 50);
 	UG_ButtonCreate( &window_1, &button1_2, BTN_ID_1, 120, 2, 220, 50 );
 	UG_ButtonSetFont( &window_1, BTN_ID_0, &FONT_12X16 );
-	UG_ButtonSetBackColor( &window_1, BTN_ID_0, C_WHEAT );
+	UG_ButtonSetBackColor( &window_1, BTN_ID_0, C_WHITE );
 	UG_ButtonSetText( &window_1, BTN_ID_0, "Find" );
 	
 	UG_ButtonSetFont( &window_1, BTN_ID_1, &FONT_12X16 );
-	UG_ButtonSetBackColor( &window_1, BTN_ID_1, C_WHEAT );
+	UG_ButtonSetBackColor( &window_1, BTN_ID_1, C_WHITE );
 	UG_ButtonSetText( &window_1, BTN_ID_1, "OK!" );
 	UG_WindowShow( &window_1 );
 
