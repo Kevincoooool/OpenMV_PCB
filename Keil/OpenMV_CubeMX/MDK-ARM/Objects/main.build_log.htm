@@ -27,9 +27,9 @@ Project File Date:  06/17/2020
 <h2>Output:</h2>
 *** Using Compiler 'V6.12', folder: 'D:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Debug'
-compiling find_qrcodes.c...
+compiling main.c...
 linking...
-Program Size: Code=76318 RO-data=213058 RW-data=704 ZI-data=562072  
+Program Size: Code=78882 RO-data=214494 RW-data=704 ZI-data=562528  
 FromELF: creating hex file...
 ".\Objects\main.axf" - 0 Error(s), 0 Warning(s).
 
@@ -78,24 +78,24 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.2.0
 
    * Component: ARM::CMSIS:DSP:Source:1.6.0
-      Source file:   CMSIS\DSP\Source\BasicMathFunctions\BasicMathFunctions.c
+      Include file:  CMSIS\DSP\Include\arm_math.h
+      Source file:   CMSIS\DSP\Source\FilteringFunctions\FilteringFunctions.c
       Source file:   CMSIS\DSP\Source\CommonTables\CommonTables.c
+      Source file:   CMSIS\DSP\Source\BasicMathFunctions\BasicMathFunctions.c
       Source file:   CMSIS\DSP\Source\ComplexMathFunctions\ComplexMathFunctions.c
       Source file:   CMSIS\DSP\Source\ControllerFunctions\ControllerFunctions.c
-      Include file:  CMSIS\DSP\Include\arm_math.h
       Source file:   CMSIS\DSP\Source\FastMathFunctions\FastMathFunctions.c
-      Source file:   CMSIS\DSP\Source\FilteringFunctions\FilteringFunctions.c
       Source file:   CMSIS\DSP\Source\MatrixFunctions\MatrixFunctions.c
-      Source file:   CMSIS\DSP\Source\StatisticsFunctions\StatisticsFunctions.c
       Source file:   CMSIS\DSP\Source\SupportFunctions\SupportFunctions.c
+      Source file:   CMSIS\DSP\Source\StatisticsFunctions\StatisticsFunctions.c
       Source file:   CMSIS\DSP\Source\TransformFunctions\TransformFunctions.c
 
    * Component: Keil::Device:STM32Cube HAL:COMP:1.5.0
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_comp.c
 
    * Component: Keil::Device:STM32Cube HAL:Common:1.5.0
-      Include file:  Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal.c
+      Include file:  Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h
 
    * Component: Keil::Device:STM32Cube HAL:Cortex:1.5.0
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_cortex.c
@@ -115,13 +115,13 @@ Package Vendor: Keil
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_gpio.c
 
    * Component: Keil::Device:STM32Cube HAL:I2C:1.5.0
-      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c_ex.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c.c
+      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c_ex.c
 
    * Component: Keil::Device:STM32Cube HAL:MMC:1.5.0
-      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_mmc.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_mmc_ex.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_sdmmc.c
+      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_mmc.c
 
    * Component: Keil::Device:STM32Cube HAL:PCD:1.5.0
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pcd_ex.c
@@ -129,30 +129,30 @@ Package Vendor: Keil
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_usb.c
 
    * Component: Keil::Device:STM32Cube HAL:PWR:1.5.0
-      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr_ex.c
+      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr.c
 
    * Component: Keil::Device:STM32Cube HAL:RCC:1.5.0
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc_ex.c
 
    * Component: Keil::Device:STM32Cube HAL:SD:1.5.0
-      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sd.c
-      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sd_ex.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_sdmmc.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_delayblock.c
+      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sd.c
+      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sd_ex.c
 
    * Component: Keil::Device:STM32Cube HAL:SPI:1.5.0
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi_ex.c
 
    * Component: Keil::Device:STM32Cube HAL:TIM:1.5.0
-      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim.c
+      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c
 
    * Component: Keil::Device:STM32Cube HAL:UART:1.5.0
-      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c
+      Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c
 
    * Component: Keil::Device:STM32Cube HAL:USART:1.5.0
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_usart.c
@@ -162,10 +162,10 @@ Package Vendor: Keil
       Source file:   Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_usb.c
 
    * Component: Keil::Device:Startup:1.5.0
-      Include file:  Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h7xx.h
       Source file:   Drivers\CMSIS\Device\ST\STM32H7xx\Source\Templates\arm\startup_stm32h743xx.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h7xx.h
       Source file:   Drivers\CMSIS\Device\ST\STM32H7xx\Source\Templates\system_stm32h7xx.c
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

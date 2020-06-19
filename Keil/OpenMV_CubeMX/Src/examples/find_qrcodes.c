@@ -96,7 +96,7 @@ void example_qrcodes(void)
 			list_pop_back(&lst, &lnk_data);
 			USB_printf("%s  ", lnk_data.payload);
 			
-			imlib_draw_string(&img, 10, 10, lnk_data.payload, 0xFF00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			imlib_draw_string(&img, 10, 10, lnk_data.payload, 0xFF00, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 			imlib_draw_rectangle(&img,lnk_data.rect.x, lnk_data.rect.y, lnk_data.rect.w,lnk_data.rect.h, 0xffff,2,0);
 			xfree(lnk_data.payload);
 //			USB_printf("-------------------------------------------------\n");

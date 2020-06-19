@@ -41,6 +41,7 @@ void ST7789VW_SetVar(uint8_t mode);
 void ST7789VW_SetGamma(uint8_t *pu8Data , uint8_t u8len);
 void ST7789VW_SetWin(uint16_t xs, uint16_t ys, uint16_t xe, uint16_t ye);
 void ST7789VW_DrawPoint(uint16_t x, uint16_t y, uint16_t u16Color);
+void ST7789VW_DrawLine(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t color);
 void ST7789VW_FillRect(uint16_t x0, uint16_t y0,  uint16_t x1, uint16_t y1, uint16_t u16Color);
 void ST7789VW_DrawBitLine16BPP(image_t *image);
 void ST7789VW_DrawGrayscale(image_t *image);

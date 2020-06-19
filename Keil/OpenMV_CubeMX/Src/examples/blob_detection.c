@@ -85,6 +85,7 @@ void example_blob_detection(void)
     
     while (1)
     {
+		UG_Update();
 //        Loop_Begin(10)
 //        {
 			tick1 = HAL_GetTick();
@@ -107,11 +108,11 @@ void example_blob_detection(void)
                 find_blobs_list_lnk_data_t tmp_lnk_data;
                 list_pop_front(&out, &tmp_lnk_data);
                 imlib_draw_rectangle(&img,tmp_lnk_data.rect.x, tmp_lnk_data.rect.y, tmp_lnk_data.rect.w,tmp_lnk_data.rect.h, 0xffff,2,0);
-				imlib_draw_rectangle(&img,tmp_lnk_data.rect.x, tmp_lnk_data.rect.y, tmp_lnk_data.rect.w,tmp_lnk_data.rect.h, 0xffff,2,0);
+				imlib_draw_string(&img, 10, 10, "Find", 0xFF00, 3, 10, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
             }
             ST7789VW_DrawBitLine16BPP(&img);  
 			//USB_printf("USB_DEVICE_Init OK!!\r\n");
-			USB_printf("%d ms\r\n", ((HAL_GetTick() - tick1)));
+//			USB_printf("%d ms\r\n", ((HAL_GetTick() - tick1)));
 //			USB_printf("FPS:%.2f\r\n",1000.0f/(HAL_GetTick() - tick1));
 //			sprintf(show_buf,"FPS:%.2f",1000.0f/(HAL_GetTick() - tick1));
 //			UG_PutString(0,190,show_buf);

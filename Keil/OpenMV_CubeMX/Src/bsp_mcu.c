@@ -346,10 +346,10 @@ void SPI2_Configuration(void)
     
     SPIx->Instance=SPI2;                        
     SPIx->Init.Mode=SPI_MODE_MASTER;             
-    SPIx->Init.Direction=SPI_DIRECTION_2LINES_TXONLY;  
+    SPIx->Init.Direction=SPI_DIRECTION_2LINES;  
     SPIx->Init.DataSize=SPI_DATASIZE_8BIT;      
     SPIx->Init.CLKPolarity=SPI_POLARITY_HIGH;    
-    SPIx->Init.CLKPhase=SPI_PHASE_2EDGE;        
+    SPIx->Init.CLKPhase=SPI_PHASE_1EDGE;        
     SPIx->Init.NSS=SPI_NSS_SOFT;
     SPIx->Init.BaudRatePrescaler=SPI_BAUDRATEPRESCALER_2;
     SPIx->Init.FirstBit=SPI_FIRSTBIT_MSB;        

@@ -53,7 +53,11 @@ void ST7789VW_SendData_DMA(uint8_t *pu8Data , uint16_t u16len)
     HAL_SPI_Transmit_DMA(&hspi2, pu8Data, u16len);
     while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY){;}    
 }
-
+void ST7789VW_SendData_MYDMA(uint8_t *pu8Data , uint16_t u16len)
+{   
+    HAL_SPI_Transmit_DMA(&hspi2, pu8Data, u16len);
+    while(HAL_SPI_GetState(&hspi2) != HAL_SPI_STATE_READY){;}    
+}
 
 void ST7789VW_Init(void)
 {   
@@ -120,7 +124,41 @@ void ST7789VW_DrawPoint(uint16_t x, uint16_t y, uint16_t u16Color)
     u8data[1] = u16Color & 0xff;
     ST7789VW_SendData(&u8data[0],2);
 }
+void ST7789VW_DrawLine(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2,uint16_t color)
+{
+	uint16_t t; 
+	int xerr=0,yerr=0,delta_x,delta_y,distance;
+	int incx,incy,uRow,uCol;
+	delta_x=x2-x1; //计算坐标增量 
+	delta_y=y2-y1;
+	uRow=x1;//画线起点坐标
+	uCol=y1;
+	if(delta_x>0)incx=1; //设置单步方向 
+	else if (delta_x==0)incx=0;//垂直线 
+	else {incx=-1;delta_x=-delta_x;}
+	if(delta_y>0)incy=1;
+	else if (delta_y==0)incy=0;//水平线 
+	else {incy=-1;delta_y=-delta_x;}
+	if(delta_x>delta_y)distance=delta_x; //选取基本增量坐标轴 
+	else distance=delta_y;
+	for(t=0;t<distance+1;t++)
+	{
+		ST7789VW_DrawPoint(uRow,uCol,color);//画点
+		xerr+=delta_x;
+		yerr+=delta_y;
+		if(xerr>distance)
+		{
+			xerr-=distance;
+			uRow+=incx;
+		}
+		if(yerr>distance)
+		{
+			yerr-=distance;
+			uCol+=incy;
+		}
+	}
 
+}
 void ST7789VW_FillRect(uint16_t x0, uint16_t y0,  uint16_t x1, uint16_t y1, uint16_t u16Color)
 {
     uint8_t u8data[2] = {0};
@@ -140,7 +178,7 @@ void ST7789VW_FillRect(uint16_t x0, uint16_t y0,  uint16_t x1, uint16_t y1, uint
 void ST7789VW_DrawBitLine16BPP(image_t *image)
 {
     
-    ST7789VW_SetWin(0,0,image->w-1,image->h-1);
+    ST7789VW_SetWin(0,80,image->w-1,image->h-1+80);
     if((image->w)*(image->h)*2 <= 65535)
     {
         ST7789VW_SendData_DMA(image->data,(image->w)*(image->h)*2);
@@ -159,7 +197,7 @@ void ST7789VW_DrawGrayscale(image_t *image)
 
 	uint16_t temp = 0;
 
-	ST7789VW_SetWin(0,0,image->w-1,image->h-1);
+	ST7789VW_SetWin(0,50,image->w-1,image->h-1);
 //	for(y=0;y<image->h;y++)
 //	{
 //		for(x=0;x<image->w;x++)

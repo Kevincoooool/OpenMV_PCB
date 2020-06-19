@@ -118,7 +118,7 @@ void SDCard_Init(void)
     g_tSD.result = f_mount(&g_tSD.fs, g_tSD.DiskPath, 0);        //挂载文件系统 
     if (g_tSD.result != FR_OK)    goto __exit;
   
-    /*
+    
     //创建目录
     memset(path , 0x00 , 64);
     sprintf(path, "%sDEBUG_Log", g_tSD.DiskPath);
@@ -134,7 +134,7 @@ void SDCard_Init(void)
     sprintf(path, "%sJson_Data", g_tSD.DiskPath);
     g_tSD.result = f_mkdir(path);   //创建Json_Data目录
     if (!(g_tSD.result == FR_OK || g_tSD.result == FR_EXIST))    goto __exit;
-    */
+    
     
     SDCard_ViewRootDir();
     

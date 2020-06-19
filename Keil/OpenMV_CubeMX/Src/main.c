@@ -22,17 +22,19 @@ void example_blob_detection(void);
 /* Private variables ---------------------------------------------------------*/
 UG_GUI  GUI_1;
 
-
+#define MAX_OBJ_NUM 10
+/* Window 1 */
+UG_WINDOW window_1;
+UG_OBJECT obj_buff_wnd_1[MAX_OBJ_NUM];
+UG_BUTTON button1_1;
+UG_BUTTON button1_2;
 
 uint8_t u8statue = 0;
 int8_t ret = 0;
 uint32_t u32time1 = 0, u32time2 = 0, u32temp = 0;
 
 extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
-UG_WINDOW window_1;
-UG_OBJECT obj_buff_wnd_1[10];
-UG_BUTTON button1_1;
-UG_BUTTON button1_2;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 /**
@@ -40,7 +42,34 @@ UG_BUTTON button1_2;
   * @param  None
   * @retval None
   */
-
+/* Callback function for the main menu */
+void window_1_callback( UG_MESSAGE* msg )
+{
+       
+        if ( msg->type == MSG_TYPE_OBJECT )
+   {      
+                if ( msg->id == OBJ_TYPE_BUTTON )
+                {
+                        switch( msg->sub_id )
+                        {
+                          case BTN_ID_0:
+                          {
+                                if(msg->event==OBJ_EVENT_PRESSED)
+                                {
+                                       // UG_WindowShow( &window_2 );
+                                }
+                               
+                          break;
+                          }
+                        case BTN_ID_1: // Show UI info
+                        {
+                        break;
+                        }
+                          
+                        }
+                }
+   }
+}
 int main(void)
 {
 	uint32_t tick1;
@@ -58,12 +87,38 @@ int main(void)
     
     ST7789VW_Init();
     UG_Init( &GUI_1, (void*)ST7789VW_DrawPoint, (UG_S16)ST7789VW_WIDTH, (UG_S16)ST7789VW_HEIGHT );
-    UG_SelectGUI(&GUI_1);
+	UG_DriverRegister(DRIVER_DRAW_LINE,(void*)ST7789VW_DrawLine);
+	UG_DriverRegister(DRIVER_FILL_FRAME,(void*)ST7789VW_FillRect);
+	UG_DriverEnable(DRIVER_DRAW_LINE);
+	UG_DriverEnable(DRIVER_FILL_FRAME);
+	UG_FillScreen( C_DARK_GRAY );
+	UG_SelectGUI(&GUI_1);
     UG_FontSelect(&FONT_12X16);
     UG_SetForecolor(C_BLACK  );
     UG_SetBackcolor(C_DARK_GRAY );
-    UG_PutString(0,170,"Hello OpenMV4!!");
+	/* Create Window 1 */
+	UG_WindowCreate( &window_1, obj_buff_wnd_1, MAX_OBJ_NUM, window_1_callback );
+	UG_WindowSetTitleText( &window_1, "OpenMV4" );
+	UG_WindowSetTitleTextFont( &window_1, &FONT_12X16 );
+	/* Configure Button 2 */
+//	UG_ButtonCreate( &window_1, &button1_1, BTN_ID_0, 0, 180, 120, 240 );
+//	UG_ButtonCreate( &window_1, &button1_2, BTN_ID_1, 120, 180, 240, 240 );
+
+	UG_ButtonCreate( &window_1, &button1_1, BTN_ID_0, 20, 2, 100, 50);
+	UG_ButtonCreate( &window_1, &button1_2, BTN_ID_1, 120, 2, 220, 50 );
+	UG_ButtonSetFont( &window_1, BTN_ID_0, &FONT_12X16 );
+	UG_ButtonSetBackColor( &window_1, BTN_ID_0, C_WHEAT );
+	UG_ButtonSetText( &window_1, BTN_ID_0, "Find" );
+	
+	UG_ButtonSetFont( &window_1, BTN_ID_1, &FONT_12X16 );
+	UG_ButtonSetBackColor( &window_1, BTN_ID_1, C_WHEAT );
+	UG_ButtonSetText( &window_1, BTN_ID_1, "OK!" );
+	UG_WindowShow( &window_1 );
+
+	UG_Update();
     
+//    UG_PutString(0,170,"Hello OpenMV4!!");
+//    
     SDCard_Init();
     
     USB_DEVICE_Init();
@@ -73,10 +128,10 @@ int main(void)
     fb_alloc_init0();
     u32temp = fb_avail();
     DEBUG("fb_avail£º%d",u32temp);
- 
-//	example_blob_detection();
+	
+	example_blob_detection();
 //	example_face_detection();
-	example_qrcodes();
+//	example_qrcodes();
 
 
 }
