@@ -1,3 +1,12 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Kevincoooool
+ * @Date: 2020-06-05 08:20:49
+ * @LastEditors: Kevincoooool
+ * @LastEditTime: 2020-07-22 08:53:31
+ * @FilePath: \srcf:\Github\OpenMV_PCB\README.md
+ -->
 ### OpenMV_PCB_KSMV
 * OpenMV PCB Project Used Altium Designer 20
 * **OPENMV** is an open source project abroad, **MIT** agreement allows anyone to use modified copy to sell, pay tribute to the original author **Ibrahim Abdelkader & Kwabena W. Agyeman**
@@ -33,5 +42,5 @@
  
 | 支付宝 | 微信支付 |
 | ------ | --------- |
-| <img src="https://www.amobbs.com/forum.php?mod=image&aid=517193&size=300x300&key=ce90f750c3fadb7d&nocache=yes&type=fixnone" height="190px" width="164px" title="支付宝" style="display:inherit;"/> | <img src="https://www.amobbs.com/forum.php?mod=image&aid=517194&size=300x300&key=15188750dc660964&nocache=yes&type=fixnone" height="190px" width="164px" title="微信支付" style="display:inherit;"/> |
+| <img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/alipay.jpg" height="190px" width="164px" title="支付宝" style="display:inherit;"/> | <img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/wechat.jpg" height="190px" width="164px" title="微信支付" style="display:inherit;"/> |
 
