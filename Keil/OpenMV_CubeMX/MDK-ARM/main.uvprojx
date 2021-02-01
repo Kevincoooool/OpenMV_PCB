@@ -17,7 +17,7 @@
         <TargetCommonOption>
           <Device>STM32H743VITx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32H7xx_DFP.2.3.1</PackID>
+          <PackID>Keil.STM32H7xx_DFP.2.6.0</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IRAM2(0x24000000,0x00080000) IROM(0x08000000,0x00100000) IROM2(0x08100000,0x00100000) XRAM(0x30000000,0x00048000) XRAM2(0x38000000,0x00010000) CPUTYPE("Cortex-M7") FPU3(DFPU) CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -49,7 +49,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\Objects\</OutputDirectory>
+          <OutputDirectory>..\output\</OutputDirectory>
           <OutputName>main</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
@@ -81,9 +81,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name></UserProg1Name>
+            <UserProg1Name>fromelf.exe   --bin -o   .\main.bin  ..\output\main.axf</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -206,7 +206,7 @@
             <Ro2Chk>0</Ro2Chk>
             <Ro3Chk>0</Ro3Chk>
             <Ir1Chk>1</Ir1Chk>
-            <Ir2Chk>1</Ir2Chk>
+            <Ir2Chk>0</Ir2Chk>
             <Ra1Chk>0</Ra1Chk>
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
@@ -887,7 +887,7 @@
         <TargetCommonOption>
           <Device>STM32H743VITx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32H7xx_DFP.2.3.1</PackID>
+          <PackID>Keil.STM32H7xx_DFP.2.6.0</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IRAM2(0x24000000,0x00080000) IROM(0x08000000,0x00100000) IROM2(0x08100000,0x00100000) XRAM(0x30000000,0x00048000) XRAM2(0x38000000,0x00010000) CPUTYPE("Cortex-M7") FPU3(DFPU) CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -1904,8 +1904,8 @@
     <files>
       <file attr="config" category="source" condition="STM32H743_ARMCC" name="Drivers\CMSIS\Device\ST\STM32H7xx\Source\Templates\arm\startup_stm32h743xx.s" version="1.6.0">
         <instance index="0">RTE\Device\STM32H743VITx\startup_stm32h743xx.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5.0" condition="STM32H7 CMSIS"/>
-        <package name="STM32H7xx_DFP" schemaVersion="1.4" url="https://www.keil.com/pack/" vendor="Keil" version="2.3.1"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.8.0" condition="STM32H7 CMSIS"/>
+        <package name="STM32H7xx_DFP" schemaVersion="1.6.3" url="https://www.keil.com/pack/" vendor="Keil" version="2.6.0"/>
         <targetInfos>
           <targetInfo name="Debug"/>
           <targetInfo name="Release"/>
@@ -1913,8 +1913,8 @@
       </file>
       <file attr="config" category="source" name="Drivers\CMSIS\Device\ST\STM32H7xx\Source\Templates\system_stm32h7xx.c" version="1.6.0">
         <instance index="0">RTE\Device\STM32H743VITx\system_stm32h7xx.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5.0" condition="STM32H7 CMSIS"/>
-        <package name="STM32H7xx_DFP" schemaVersion="1.4" url="https://www.keil.com/pack/" vendor="Keil" version="2.3.1"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.8.0" condition="STM32H7 CMSIS"/>
+        <package name="STM32H7xx_DFP" schemaVersion="1.6.3" url="https://www.keil.com/pack/" vendor="Keil" version="2.6.0"/>
         <targetInfos>
           <targetInfo name="Debug"/>
           <targetInfo name="Release"/>

@@ -204,7 +204,7 @@ void ST7789VW_DrawGrayscale(image_t *image)
 //		{
 
 	ST7789VW_SendData_DMA(&image->data[0],65535);
-        ST7789VW_SendData_DMA(&image->data[65535],(image->w)*(image->h)*2-65535);		
+		ST7789VW_SendData_DMA(&image->data[65535],(image->w)*(image->h)*2-65535);		
 			
 //		}
 //	}

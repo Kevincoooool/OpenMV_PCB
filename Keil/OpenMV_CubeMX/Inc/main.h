@@ -47,7 +47,7 @@
 #include <stdbool.h>
 
 /* Exported types ------------------------------------------------------------*/
-#define DEBUG(...)     UsartPrintf(&huart3,"%s:%d :",__FILE__,__LINE__);UsartPrintf(&huart3 ,__VA_ARGS__)
+#define DEBUG(...)     UsartPrintf(&huart3,"\r\n%s:%d :",__FILE__,__LINE__);UsartPrintf(&huart3 ,__VA_ARGS__)
 //#define DEBUG(...)     printf(__VA_ARGS__)
 //#define DEBUG(p_string)     UsartPutString(&huart1 ,p_string)
 /* Exported constants --------------------------------------------------------*/

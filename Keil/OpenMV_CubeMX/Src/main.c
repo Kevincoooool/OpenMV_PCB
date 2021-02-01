@@ -83,8 +83,8 @@ int main(void)
     GPIO_Configuration();
     systick_init();
     USART3_Configuration(UART3_BAUD);
-    DEBUG("OpenMV BUILD:%04d %s %s\r\n" ,BUILD_NUMBER , __DATE__, __TIME__ );
-    
+    DEBUG("OpenMV BUILD:%04d %s %s" ,BUILD_NUMBER , __DATE__, __TIME__ );
+ 
     ST7789VW_Init();
     UG_Init( &GUI_1, (void*)ST7789VW_DrawPoint, (UG_S16)ST7789VW_WIDTH, (UG_S16)ST7789VW_HEIGHT );
 	UG_DriverRegister(DRIVER_DRAW_LINE,(void*)ST7789VW_DrawLine);

@@ -142,7 +142,7 @@ void SDCard_Init(void)
 __exit:
     if (g_tSD.result != FR_OK)
     {
-        DEBUG("DEBUG :(%s)\r\n", FR_Table[g_tSD.result]);
+        DEBUG("DEBUG :(%s)", FR_Table[g_tSD.result]);
         f_mount(NULL, g_tSD.DiskPath, 0);    //卸载文件系统 
     }
 }
