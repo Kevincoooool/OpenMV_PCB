@@ -4,7 +4,7 @@
  * @Author       : Kevincoooool
  * @Date         : 2020-06-05 08:20:49
  * @LastEditors  : Kevincoooool
- * @LastEditTime : 2021-02-02 09:29:18
+ * @LastEditTime : 2021-02-02 09:30:04
  * @FilePath     : \Github\OpenMV_PCB\README.md
 -->
 
@@ -45,5 +45,5 @@
 
 | 支付宝 | 微信支付 |
 | ------ | --------- |
-|<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/alipay.png" height="50px" width="54px" title="支付宝" style="display:inherit;"/> | 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/wechat.png" height="50px" width="54px" title="微信支付" style="display:inherit;"/> |
+|<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/alipay.png" height="200px" width="204px" title="支付宝" style="display:inherit;"/> ||
+<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/wechat.png" height="200px" width="204px" title="微信支付" style="display:inherit;"/> |
