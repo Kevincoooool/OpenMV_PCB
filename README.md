@@ -5,7 +5,7 @@
  * @Author       : Kevincoooool
  * @Date         : 2020-06-05 08:20:49
  * @LastEditors  : Kevincoooool
- * @LastEditTime : 2021-02-02 09:37:53
+ * @LastEditTime : 2021-02-02 09:40:09
  * @FilePath     : \Github\OpenMV_PCB\README.md
 -->
 
@@ -40,7 +40,7 @@
 
 ## Pic:
 
-<img src="https://whycan.com/files/members/4115/back.jpg" height="500px" width="800px" title="正面" style="display:inherit;"/> 
+<img src="https://whycan.com/files/members/4115/front.jpg" height="500px" width="800px" title="正面" style="display:inherit;"/> 
 <img src="https://whycan.com/files/members/4115/back.jpg" height="500px" width="800px" title="反面" style="display:inherit;"/> 
 
 ## 捐赠
