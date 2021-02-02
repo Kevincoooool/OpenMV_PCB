@@ -4,7 +4,7 @@
  * @Author       : Kevincoooool
  * @Date         : 2020-06-05 08:20:49
  * @LastEditors  : Kevincoooool
- * @LastEditTime : 2021-02-02 09:25:16
+ * @LastEditTime : 2021-02-02 09:26:08
  * @FilePath     : \Github\OpenMV_PCB\README.md
 -->
 
@@ -21,6 +21,7 @@
 * Type-C USB
 * DIY QQ communication group: 554150925
 
+### 
 
 ### OpenMV_PCB_KSMV
 * 使用Altium Designer 20画的OpenMV PCB
@@ -46,3 +47,4 @@
 <img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/alipay.png" height="50px" width="54px" title="支付宝" style="display:inherit;"/> | 
 <img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/wechat.png" height="50px" width="54px" title="微信支付" style="display:inherit;"/> |
 
+![wechat.png](pic/wechat.png)
