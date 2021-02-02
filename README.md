@@ -1,14 +1,16 @@
+
 <!--
  * @Descripttion : 
  * @version      : 
  * @Author       : Kevincoooool
  * @Date         : 2020-06-05 08:20:49
  * @LastEditors  : Kevincoooool
- * @LastEditTime : 2021-02-02 09:30:04
+ * @LastEditTime : 2021-02-02 09:37:53
  * @FilePath     : \Github\OpenMV_PCB\README.md
 -->
 
 ### OpenMV_PCB_KSMV
+
 * OpenMV PCB Project & Altium Designer 20
 * **OPENMV** is an open source project abroad, **MIT** agreement allows anyone to use modified copy to sell, pay tribute to the original author **Ibrahim Abdelkader & Kwabena W. Agyeman**
 * Open source allows everyone to do it themselves!
@@ -38,12 +40,10 @@
 
 ## Pic:
 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/front.jpg" height="600px" width="800px" title="正面" style="display:inherit;"/> 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/back.jpg" height="600px" width="800px" title="反面" style="display:inherit;"/> 
+<img src="https://whycan.com/files/members/4115/back.jpg" height="500px" width="800px" title="正面" style="display:inherit;"/> 
+<img src="https://whycan.com/files/members/4115/back.jpg" height="500px" width="800px" title="反面" style="display:inherit;"/> 
 
 ## 捐赠
-
 | 支付宝 | 微信支付 |
 | ------ | --------- |
-|<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/alipay.png" height="200px" width="204px" title="支付宝" style="display:inherit;"/> ||
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/wechat.png" height="200px" width="204px" title="微信支付" style="display:inherit;"/> |
+| <img src="https://whycan.com/files/members/4115/alipay.png" height="200px" width="164px" title="支付宝" style="display:inherit;"/> | <img src="https://whycan.com/files/members/4115/wechat.png" height="200px" width="164px" title="微信支付" style="display:inherit;"/> |
