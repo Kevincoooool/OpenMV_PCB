@@ -5,7 +5,7 @@
  * @Author       : Kevincoooool
  * @Date         : 2020-06-05 08:20:49
  * @LastEditors  : Kevincoooool
- * @LastEditTime : 2021-02-02 09:40:09
+ * @LastEditTime : 2021-02-02 09:42:00
  * @FilePath     : \Github\OpenMV_PCB\README.md
 -->
 
@@ -46,4 +46,4 @@
 ## 捐赠
 | 支付宝 | 微信支付 |
 | ------ | --------- |
-| <img src="https://whycan.com/files/members/4115/alipay.png" height="200px" width="164px" title="支付宝" style="display:inherit;"/> | <img src="https://whycan.com/files/members/4115/wechat.png" height="200px" width="164px" title="微信支付" style="display:inherit;"/> |
+| <img src="https://whycan.com/files/members/4115/alipay.png" height="200px" width="164px" title="支付宝" style="display:inherit;"/> | <img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/wechat.png" height="200px" width="164px" title="微信支付" style="display:inherit;"/> |
