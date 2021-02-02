@@ -4,7 +4,7 @@
  * @Author       : Kevincoooool
  * @Date         : 2020-06-05 08:20:49
  * @LastEditors  : Kevincoooool
- * @LastEditTime : 2021-02-02 09:28:55
+ * @LastEditTime : 2021-02-02 09:29:18
  * @FilePath     : \Github\OpenMV_PCB\README.md
 -->
 
@@ -38,12 +38,12 @@
 
 ## Pic:
 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/front.jpg" height="600px" width="800px" title="正面" style="display:inherit;"/> 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/back.jpg" height="600px" width="800px" title="反面" style="display:inherit;"/> 
+<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/front.jpg" height="600px" width="800px" title="正面" style="display:inherit;"/> 
+<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/back.jpg" height="600px" width="800px" title="反面" style="display:inherit;"/> 
 
 ## 捐赠
 
 | 支付宝 | 微信支付 |
 | ------ | --------- |
-|<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/alipay.png" height="50px" width="54px" title="支付宝" style="display:inherit;"/> | 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/wechat.png" height="50px" width="54px" title="微信支付" style="display:inherit;"/> |
+|<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/alipay.png" height="50px" width="54px" title="支付宝" style="display:inherit;"/> | 
+<img src="https://github.com/Kevincoooool/OpenMV_PCB/blob/master/pic/wechat.png" height="50px" width="54px" title="微信支付" style="display:inherit;"/> |
