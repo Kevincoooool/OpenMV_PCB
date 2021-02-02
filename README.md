@@ -4,7 +4,7 @@
  * @Author       : Kevincoooool
  * @Date         : 2020-06-05 08:20:49
  * @LastEditors  : Kevincoooool
- * @LastEditTime : 2021-02-02 09:26:08
+ * @LastEditTime : 2021-02-02 09:28:55
  * @FilePath     : \Github\OpenMV_PCB\README.md
 -->
 
@@ -35,16 +35,15 @@
 * 背面可插OV7725，OV2640，OV5640
 * Type-C USB
 * DIY QQ交流群：554150925
+
 ## Pic:
 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/front.jpg" height="600px" width="800px" title="支付宝" style="display:inherit;"/> | 
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/back.jpg" height="600px" width="800px" title="微信支付" style="display:inherit;"/> |
+<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/front.jpg" height="600px" width="800px" title="正面" style="display:inherit;"/> 
+<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/back.jpg" height="600px" width="800px" title="反面" style="display:inherit;"/> 
 
 ## 捐赠
 
 | 支付宝 | 微信支付 |
 | ------ | --------- |
-<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/alipay.png" height="50px" width="54px" title="支付宝" style="display:inherit;"/> | 
+|<img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/alipay.png" height="50px" width="54px" title="支付宝" style="display:inherit;"/> | 
 <img src="https://github.com/Kevincoooool/OpenMV_PCB/tree/master/pic/wechat.png" height="50px" width="54px" title="微信支付" style="display:inherit;"/> |
-
-![wechat.png](pic/wechat.png)
